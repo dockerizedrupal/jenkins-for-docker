@@ -1,6 +1,6 @@
 # docker-jenkins
 
-A [Docker](https://docker.com/) container for [Jenkins CI](http://jenkins-ci.org/).
+A [Docker](https://docker.com/) container for [Jenkins](http://jenkins-ci.org/).
 
 ## Jenkins (STABLE BRANCH)
 
@@ -36,6 +36,22 @@ Using the `fig` command
       && cd "${TMP}" \
       && sudo docker build -t simpledrupalcloud/jenkins:latest . \
       && cd -
+
+## Back up Jenkins data
+
+    sudo docker run \
+      --rm \
+      --volumes-from jenkinsdata \
+      -v $(pwd):/backup \
+      busybox:latest tar czvf /backup/jenkinsdata.tar.gz /jenkins/data
+
+## Restore Jenkins data from a backup
+
+    sudo docker run \
+      --rm \
+      --volumes-from jenkinsdata \
+      -v $(pwd):/backup \
+      busybox:latest tar xzvf /backup/jenkinsdata.tar.gz
 
 ## License
 
