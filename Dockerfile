@@ -11,6 +11,6 @@ RUN /src/build.sh
 
 RUN rm -rf /tmp/*
 
-EXPOSE 80
+EXPOSE 8080
 
 ENTRYPOINT ["/src/run.sh"]
