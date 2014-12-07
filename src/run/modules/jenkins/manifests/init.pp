@@ -5,4 +5,9 @@ class jenkins {
     mode => 644,
     creates => '/jenkins/data/config.xml'
   }
+
+  exec { 'chown -R jenkins.jenkins /jenkins':
+    path => ['/bin'],
+    require => File['/jenkins/data/config.xml']
+  }
 }
