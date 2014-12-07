@@ -6,6 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ADD ./src /src
 
+RUN apt-get update
+
 RUN chmod +x /src/build.sh
 RUN /src/build.sh
 
@@ -18,4 +20,4 @@ VOLUME ["/jenkins/data"]
 
 EXPOSE 8080
 
-ENTRYPOINT ["/src/run.sh"]
+CMD ["/src/run.sh"]
