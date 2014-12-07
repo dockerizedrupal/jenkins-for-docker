@@ -11,6 +11,8 @@ RUN /src/build.sh
 
 RUN rm -rf /tmp/*
 
+VOLUME ["/jenkins/data"]
+
 EXPOSE 8080
 
 ENTRYPOINT ["/src/run.sh"]
