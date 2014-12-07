@@ -8,13 +8,20 @@ A [Docker](https://docker.com/) container for [Jenkins CI](http://jenkins-ci.org
 
 Using the `docker` command:
 
+    CONTAINER="jenkinsdata" && sudo docker run \
+      --name "${CONTAINER}" \
+      -h "${CONTAINER}" \
+      -v /jenkins/data \
+      simpledrupalcloud/data:latest
+
     CONTAINER="jenkins" && sudo docker run \
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
-      -p 80:80 \
+      -p 8080:8080 \
+      --volumes-from jenkinsdata \
       -d \
       simpledrupalcloud/jenkins:latest
-      
+
 Using the `fig` command
 
     TMP="$(mktemp -d)" \
