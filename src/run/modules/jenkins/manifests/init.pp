@@ -1,5 +1,8 @@
 class jenkins {
-  exec { 'chown -R jenkins.jenkins /jenkins':
-    path => ['/bin']
+  file { '/jenkins/data/config.xml':
+    ensure => present,
+    source => 'puppet:///modules/jenkins/jenkins/data/config.xml',
+    mode => 644,
+    creates => '/jenkins/data/config.xml'
   }
 }
