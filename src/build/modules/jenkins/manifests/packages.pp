@@ -1,5 +1,5 @@
 class jenkins::packages {
-  exec { '/bin/bash -c "wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -"': }
+  exec { '/bin/bash -c "wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -"': }
 
   file { '/etc/apt/sources.list.d/jenkins.list':
     ensure => present,
