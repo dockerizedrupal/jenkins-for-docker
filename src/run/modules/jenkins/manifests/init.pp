@@ -3,7 +3,7 @@ class jenkins {
     ensure => present,
     source => 'puppet:///modules/jenkins/jenkins/data/config.xml',
     mode => 644,
-    creates => '/jenkins/data/config.xml'
+    replace => no
   }
 
   exec { 'chown -R jenkins.jenkins /jenkins':
