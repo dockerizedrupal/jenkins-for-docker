@@ -1,12 +1,12 @@
 jenkins:
-  image: simpledrupalcloud/jenkins:latest
+  image: simpledrupalcloud/jenkins:dev
   hostname: jenkins
   ports:
     - "8080:8080"
   volumes_from:
     - jenkinsdata
 jenkinsdata:
-  image: simpledrupalcloud/data:latest
+  image: simpledrupalcloud/data:dev
   hostname: jenkinsdata
   volumes:
     - /jenkins/data

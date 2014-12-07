@@ -2,7 +2,7 @@
 
 A [Docker](https://docker.com/) container for [Jenkins](http://jenkins-ci.org/).
 
-## Jenkins (STABLE BRANCH)
+## Jenkins (DEVELOPMENT BRANCH)
 
 ### Run the container
 
@@ -12,7 +12,7 @@ Using the `docker` command:
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -v /jenkins/data \
-      simpledrupalcloud/data:latest
+      simpledrupalcloud/data:dev
 
     CONTAINER="jenkins" && sudo docker run \
       --name "${CONTAINER}" \
@@ -20,13 +20,14 @@ Using the `docker` command:
       -p 8080:8080 \
       --volumes-from jenkinsdata \
       -d \
-      simpledrupalcloud/jenkins:latest
+      simpledrupalcloud/jenkins:dev
 
 Using the `fig` command
 
     TMP="$(mktemp -d)" \
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
+      && git checkout dev \
       && sudo fig up
 
 ### Build the image
@@ -34,7 +35,8 @@ Using the `fig` command
     TMP="$(mktemp -d)" \
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
-      && sudo docker build -t simpledrupalcloud/jenkins:latest . \
+      && git checkout dev \
+      && sudo docker build -t simpledrupalcloud/jenkins:dev . \
       && cd -
 
 ## Back up Jenkins data
