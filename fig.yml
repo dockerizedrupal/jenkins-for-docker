@@ -1,0 +1,5 @@
+jenkins:
+  image: simpledrupalcloud/jenkins:latest
+  hostname: jenkins
+  ports:
+    - "80:80"

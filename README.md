@@ -1,0 +1,5 @@
+# docker-jenkins
+
+## License
+
+**MIT**
