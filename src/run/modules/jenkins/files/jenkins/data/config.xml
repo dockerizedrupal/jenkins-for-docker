@@ -12,7 +12,7 @@
     </securityRealm>
     <disableRememberMe>false</disableRememberMe>
     <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
-    <workspaceDir>${JENKINS_HOME}/workspace/${ITEM_FULLNAME}</workspaceDir>
+    <workspaceDir>${ITEM_ROOTDIR}/workspace</workspaceDir>
     <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
     <markupFormatter class="hudson.markup.EscapedMarkupFormatter"/>
     <jdks/>
