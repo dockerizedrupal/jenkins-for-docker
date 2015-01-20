@@ -42,7 +42,7 @@ Using the `fig` command
       --rm \
       --volumes-from jenkinsdata \
       -v $(pwd):/backup \
-      simpledrupalcloud/data:latest tar czvf /backup/jenkinsdata.tar.gz /jenkins/data
+      simpledrupalcloud/base:latest tar czvf /backup/jenkinsdata.tar.gz /jenkins/data
 
 ## Restore Jenkins data from a backup
 
@@ -50,7 +50,7 @@ Using the `fig` command
       --rm \
       --volumes-from jenkinsdata \
       -v $(pwd):/backup \
-      simpledrupalcloud/data:latest tar xzvf /backup/jenkinsdata.tar.gz
+      simpledrupalcloud/base:latest tar xzvf /backup/jenkinsdata.tar.gz
 
 ## License
 
