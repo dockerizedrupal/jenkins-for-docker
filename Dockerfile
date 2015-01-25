@@ -14,6 +14,7 @@ RUN /src/clean.sh
 
 VOLUME ["/jenkins"]
 
-EXPOSE 8080
+EXPOSE 80
+EXPOSE 443
 
 CMD ["/src/run.sh"]

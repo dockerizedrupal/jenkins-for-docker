@@ -1,4 +1,6 @@
 class jenkins {
+  require registry::nginx
+
   exec { 'mkdir -p /jenkins/data':
     path => ['/bin']
   }
