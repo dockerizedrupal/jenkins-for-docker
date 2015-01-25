@@ -6,6 +6,8 @@ jenkins:
     - "443:443"
   volumes_from:
     - jenkinsdata
+  environment:
+    - SERVER_NAME=localhost
 jenkinsdata:
   image: simpledrupalcloud/data:latest
   hostname: jenkinsdata

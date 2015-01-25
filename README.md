@@ -38,10 +38,13 @@ Using the `fig` command
 
 ## Start the container automatically
 
+    SERVER_NAME="localhost"
+    
     TMP="$(mktemp -d)" \
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
       && sudo cp ./fig.yml /opt/jenkins.yml \
+      && sudo sed -i "s/localhost/${SERVER_NAME}/g" /opt/jenkins.yml \
       && sudo cp ./jenkins.conf /etc/init/jenkins.conf \
       && cd -
 
