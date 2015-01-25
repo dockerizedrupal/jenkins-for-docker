@@ -15,7 +15,8 @@ Using the `docker` command:
     CONTAINER="jenkins" && sudo docker run \
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
-      -p 8080:8080 \
+      -p 80:80 \
+      -p 443:443 \
       --volumes-from jenkinsdata \
       -d \
       simpledrupalcloud/jenkins:latest
