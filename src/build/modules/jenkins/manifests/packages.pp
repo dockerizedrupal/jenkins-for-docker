@@ -7,7 +7,7 @@ class jenkins::packages {
     require => Exec['/bin/sh - root -mc "wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -"']
   }
 
-  exec { 'JENKINS=1 apt-get update':
+  exec { '/bin/su - root -mc "JENKINS=1 apt-get update"':
     path => ['/usr/bin'],
     require => File['/etc/apt/sources.list.d/jenkins.list']
   }
@@ -16,6 +16,6 @@ class jenkins::packages {
       'jenkins'
     ]:
     ensure => present,
-    require => Exec['JENKINS=1 apt-get update']
+    require => Exec['/bin/su - root -mc "JENKINS=1 apt-get update"']
   }
 }
