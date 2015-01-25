@@ -43,6 +43,7 @@ Using the `fig` command
     TMP="$(mktemp -d)" \
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
+      && git checkout dev \
       && sudo cp ./fig.yml /opt/jenkins.yml \
       && sudo cp ./jenkins.conf /etc/init/jenkins.conf \
       && cd -
