@@ -57,7 +57,7 @@ Using the `fig` command
       --rm \
       --volumes-from jenkinsdata \
       -v $(pwd):/backup \
-      simpledrupalcloud/base:dev tar czvf /backup/jenkinsdata.tar.gz /jenkins/data
+      simpledrupalcloud/base:dev tar czvf /backup/jenkinsdata.tar.gz /jenkins
 
 ## Restore Jenkins data from a backup
 
