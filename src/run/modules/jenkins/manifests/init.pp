@@ -6,6 +6,7 @@ class jenkins {
   }
 
   exec { 'chown -R jenkins.jenkins /jenkins':
-    path => ['/bin']
+    path => ['/bin'],
+    require => Exec['mkdir -p /jenkins/data']
   }
 }
