@@ -36,6 +36,15 @@ Using the `fig` command
       && sudo docker build -t simpledrupalcloud/jenkins:latest . \
       && cd -
 
+## Start the container automatically
+
+    TMP="$(mktemp -d)" \
+      && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-jenkins.git "${TMP}" \
+      && cd "${TMP}" \
+      && sudo cp ./fig.yml /opt/jenkins.yml \
+      && sudo cp ./jenkins.conf /etc/init/jenkins.conf \
+      && cd -
+
 ## Back up Jenkins data
 
     sudo docker run \
