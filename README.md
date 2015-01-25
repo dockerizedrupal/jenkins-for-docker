@@ -1,6 +1,6 @@
 # docker-jenkins
 
-A [Docker](https://docker.com/) container for [Jenkins](http://jenkins-ci.org/).
+A [Docker](https://docker.com/) container for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.org/) in front of it providing HTTPS.
 
 ## Run the container
 
