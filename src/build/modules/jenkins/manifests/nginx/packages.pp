@@ -8,7 +8,7 @@ class jenkins::nginx::packages {
     require => Exec['/bin/su - root -mc "wget -q -O - http://nginx.org/keys/nginx_signing.key | apt-key add -"']
   }
 
-  exec { 'apt-get update':
+  exec { 'NGINX=1 apt-get update':
     path => ['/usr/bin'],
     require => File['/etc/apt/sources.list.d/nginx.list']
   }
@@ -17,6 +17,6 @@ class jenkins::nginx::packages {
       'nginx'
     ]:
     ensure => present,
-    require => Exec['apt-get update']
+    require => Exec['NGINX=1 apt-get update']
   }
 }

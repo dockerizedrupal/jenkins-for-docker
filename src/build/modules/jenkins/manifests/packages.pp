@@ -1,13 +1,13 @@
 class jenkins::packages {
-  exec { '/bin/bash -c "wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -"': }
+  exec { '/bin/sh - root -mc "wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -"': }
 
   file { '/etc/apt/sources.list.d/jenkins.list':
     ensure => present,
     source => 'puppet:///modules/jenkins/etc/apt/sources.list.d/jenkins.list',
-    require => Exec['/bin/bash -c "wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -"']
+    require => Exec['/bin/sh - root -mc "wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -"']
   }
 
-  exec { 'apt-get update':
+  exec { 'JENKINS=1 apt-get update':
     path => ['/usr/bin'],
     require => File['/etc/apt/sources.list.d/jenkins.list']
   }
@@ -16,6 +16,6 @@ class jenkins::packages {
       'jenkins'
     ]:
     ensure => present,
-    require => Exec['apt-get update']
+    require => Exec['JENKINS=1 apt-get update']
   }
 }
