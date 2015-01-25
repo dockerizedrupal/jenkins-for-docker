@@ -64,6 +64,10 @@ Using the `fig` command
       -v $(pwd):/backup \
       simpledrupalcloud/base:latest tar xzvf /backup/jenkinsdata.tar.gz
 
+## Known issues
+
+* https://issues.jenkins-ci.org/browse/JENKINS-9774
+
 ## License
 
 **MIT**
