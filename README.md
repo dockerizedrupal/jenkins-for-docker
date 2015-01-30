@@ -50,19 +50,35 @@ Using the `fig` command
 
 ## Back up Jenkins data
 
+Back up a single Jenkins data container
+
     sudo docker run \
       --rm \
       --volumes-from jenkinsdata \
       -v $(pwd):/backup \
       simpledrupalcloud/base:latest tar czvf /backup/jenkinsdata.tar.gz /jenkins
 
+Back up all Jenkins data containers running on your host
+
+    sudo tools/jenkinsdata backup
+    
 ## Restore Jenkins data from a backup
+
+    CONTAINER="jenkinsdata" && sudo docker run \
+      --name "${CONTAINER}" \
+      -h "${CONTAINER}" \
+      -v /jenkins \
+      simpledrupalcloud/data:latest
 
     sudo docker run \
       --rm \
       --volumes-from jenkinsdata \
       -v $(pwd):/backup \
       simpledrupalcloud/base:latest tar xzvf /backup/jenkinsdata.tar.gz
+
+Restore all Jenkins data containers from a backup
+
+    sudo tools/jenkinsdata restore
 
 ## Known issues
 
