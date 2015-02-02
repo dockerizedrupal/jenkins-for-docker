@@ -4,4 +4,5 @@ node default {
   include jenkins::machine
   include jenkins::nodejs
   include jenkins::subversion
+  include jenkins::ftp
 }
