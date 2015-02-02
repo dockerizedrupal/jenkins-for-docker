@@ -3,4 +3,5 @@ node default {
   include jenkins::docker
   include jenkins::machine
   include jenkins::nodejs
+  include jenkins::subversion
 }
