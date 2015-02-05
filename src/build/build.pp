@@ -6,4 +6,5 @@ node default {
   include jenkins::subversion
   include jenkins::ftp
   include jenkins::ncftp
+  include jenkins::lftp
 }
