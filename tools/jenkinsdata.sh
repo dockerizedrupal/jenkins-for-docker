@@ -26,6 +26,8 @@ jenkinsdata_containers() {
   echo "$(sudo docker ps -a | grep jenkinsdata | awk '{ print $1 }')"
 }
 
+shopt -s nullglob
+
 if [ "${1}" = "backup" ]; then
   CONTAINERS="$(jenkinsdata_containers)"
 
