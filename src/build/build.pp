@@ -7,4 +7,5 @@ node default {
   include jenkins::ftp
   include jenkins::ncftp
   include jenkins::lftp
+  include jenkins::jq
 }
