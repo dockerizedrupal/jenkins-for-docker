@@ -5,7 +5,7 @@ class jenkins::machine {
     mode => 755
   }
 
-  exec { 'mv /tmp/docker-machine_linux-amd64 /usr/local/bin/machine':
+  exec { 'mv /tmp/docker-machine_linux-amd64 /usr/local/bin/docker-machine':
     path => ['/bin'],
     require => File['/tmp/docker-machine_linux-amd64']
   }
