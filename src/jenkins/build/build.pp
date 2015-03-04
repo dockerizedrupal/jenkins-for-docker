@@ -8,4 +8,5 @@ node default {
   include jenkins::ncftp
   include jenkins::lftp
   include jenkins::jq
+  include jenkins::awscli
 }
