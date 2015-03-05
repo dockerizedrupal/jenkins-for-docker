@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
 
+shopt -s nullglob
+
 WORKING_DIR="$(pwd)"
 
+hash docker 2> /dev/null
+
+if [ "${?}" -ne 0 ]; then
+  echo "jenkinsdata: docker command not found."
+
+  exit 1
+fi
+
 help() {
-  echo "Usage: jenkinsdata <backup|restore|rm>"
+  cat << EOF
+jenkinsdata: Usage: jenkinsdata <backup|restore|rm>
+EOF
 
   exit 1
 }
@@ -13,7 +25,7 @@ if [ "${1}" == "-h" ] || [ "${1}" == "--help" ]; then
 fi
 
 unknown_command() {
-  echo "Unknown command. See 'jenkinsdata --help'"
+  echo "jenkinsdata: Unknown command. See 'jenkinsdata --help'"
 
   exit 1
 }
@@ -23,10 +35,8 @@ if [ -z "${1}" ]; then
 fi
 
 jenkinsdata_containers() {
-  echo "$(sudo docker ps -a | grep jenkinsdata | awk '{ print $1 }')"
+  echo "$(docker ps -a | grep jenkinsdata | awk '{ print $1 }')"
 }
-
-shopt -s nullglob
 
 if [ "${1}" = "backup" ]; then
   CONTAINERS="$(jenkinsdata_containers)"
@@ -35,7 +45,7 @@ if [ "${1}" = "backup" ]; then
     for CONTAINER in ${CONTAINERS}; do
       CONTAINER_NAME="$(docker inspect --format='{{.Name}}' ${CONTAINER} | cut -c 2-)"
 
-      sudo docker run \
+      docker run \
         --rm \
         --volumes-from "${CONTAINER}" \
         -v "${WORKING_DIR}:/backup" \
@@ -46,13 +56,13 @@ elif [ "${1}" = "restore" ]; then
   for FILE in *.tar.gz; do
     CONTAINER="${FILE%%.*}"
 
-    sudo docker run \
+    docker run \
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -v /jenkins \
       simpledrupalcloud/data:latest
 
-    sudo docker run \
+    docker run \
       --rm \
       --volumes-from "${CONTAINER}" \
       -v "${WORKING_DIR}:/backup" \
@@ -62,7 +72,7 @@ elif [ "${1}" = "rm" ]; then
   CONTAINERS="$(jenkinsdata_containers)"
 
   if [ -n "${CONTAINERS}" ]; then
-    sudo docker rm -f ${CONTAINERS}
+    docker rm -f ${CONTAINERS}
   fi
 else
   unknown_command
