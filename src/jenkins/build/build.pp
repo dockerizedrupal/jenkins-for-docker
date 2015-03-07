@@ -9,4 +9,5 @@ node default {
   include jenkins::lftp
   include jenkins::jq
   include jenkins::awscli
+  include jenkins::git_svn
 }
