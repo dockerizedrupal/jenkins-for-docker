@@ -10,7 +10,7 @@ Using the `docker` command:
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -v /jenkins/data \
-      simpledrupalcloud/data:dev
+      viljaste/data:dev
 
     CONTAINER="jenkins" && sudo docker run \
       --name "${CONTAINER}" \
@@ -19,7 +19,7 @@ Using the `docker` command:
       -p 443:443 \
       --volumes-from jenkinsdata \
       -d \
-      simpledrupalcloud/jenkins:dev
+      viljaste/jenkins:dev
 
 Using the `fig` command
 
@@ -35,7 +35,7 @@ Using the `fig` command
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
       && git checkout dev \
-      && sudo docker build -t simpledrupalcloud/jenkins:dev . \
+      && sudo docker build -t viljaste/jenkins:dev . \
       && cd -
 
 ## Start the container automatically
@@ -59,7 +59,7 @@ Back up a single Jenkins data container
       --rm \
       --volumes-from jenkinsdata \
       -v $(pwd):/backup \
-      simpledrupalcloud/base:dev tar czvf /backup/jenkinsdata.tar.gz /jenkins
+      viljaste/base:dev tar czvf /backup/jenkinsdata.tar.gz /jenkins
 
 Back up all Jenkins data containers running on your host
 
@@ -71,13 +71,13 @@ Back up all Jenkins data containers running on your host
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -v /jenkins \
-      simpledrupalcloud/data:latest
+      viljaste/data:latest
 
     sudo docker run \
       --rm \
       --volumes-from jenkinsdata \
       -v $(pwd):/backup \
-      simpledrupalcloud/base:dev tar xzvf /backup/jenkinsdata.tar.gz
+      viljaste/base:dev tar xzvf /backup/jenkinsdata.tar.gz
 
 Restore all Jenkins data containers from a backup
 

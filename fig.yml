@@ -1,5 +1,5 @@
 jenkins:
-  image: simpledrupalcloud/jenkins:dev
+  image: viljaste/jenkins:dev
   hostname: jenkins
   ports:
     - "80:80"
@@ -9,7 +9,7 @@ jenkins:
   environment:
     - SERVER_NAME=localhost
 jenkinsdata:
-  image: simpledrupalcloud/data:dev
+  image: viljaste/data:dev
   hostname: jenkinsdata
   volumes:
     - /jenkins
