@@ -68,7 +68,7 @@ Back up all Jenkins data containers running on your host
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -v /jenkins \
-      viljaste/data:latest
+      viljaste/data:dev
 
     sudo docker run \
       --rm \
