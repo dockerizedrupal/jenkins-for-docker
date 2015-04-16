@@ -68,4 +68,6 @@ node default {
   include jenkins::jq
   include jenkins::awscli
   include jenkins::git_svn
+  include jenkins::php
+  include jenkins::composer
 }
