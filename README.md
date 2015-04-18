@@ -21,13 +21,13 @@ Using the `docker` command:
       -d \
       viljaste/jenkins:dev
 
-Using the `fig` command
+Using the `docker-compose` command
 
     TMP="$(mktemp -d)" \
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
       && git checkout dev \
-      && sudo fig up
+      && sudo docker-compose up
 
 ## Build the image
 
@@ -46,7 +46,7 @@ Using the `fig` command
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
       && git checkout dev \
-      && sudo cp ./fig.yml /opt/jenkins.yml \
+      && sudo cp ./docker-compose.yml /opt/jenkins.yml \
       && sudo sed -i "s/localhost/${SERVER_NAME}/g" /opt/jenkins.yml \
       && sudo cp ./jenkins.conf /etc/init/jenkins.conf \
       && cd -
@@ -82,10 +82,6 @@ Back up all Jenkins data containers running on your host
 Restore all Jenkins data containers from a backup
 
     sudo tools/jenkinsdata restore
-
-## Known issues
-
-* https://issues.jenkins-ci.org/browse/JENKINS-9774
 
 ## License
 
