@@ -1,6 +1,7 @@
 jenkins:
   image: viljaste/jenkins:latest
   hostname: jenkins
+  restart: always
   ports:
     - "80:80"
     - "443:443"
