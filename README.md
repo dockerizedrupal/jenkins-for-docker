@@ -24,14 +24,14 @@ Using the `docker` command:
 Using the `docker-compose` command
 
     TMP="$(mktemp -d)" \
-      && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-jenkins.git "${TMP}" \
+      && GIT_SSL_NO_VERIFY=true git clone https://git.beyondcloud.io/viljaste/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
       && sudo docker-compose up
 
 ## Build the image
 
     TMP="$(mktemp -d)" \
-      && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-jenkins.git "${TMP}" \
+      && GIT_SSL_NO_VERIFY=true git clone https://git.beyondcloud.io/viljaste/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
       && sudo docker build -t viljaste/jenkins:latest . \
       && cd -

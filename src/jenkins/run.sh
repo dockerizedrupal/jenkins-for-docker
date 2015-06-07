@@ -2,4 +2,4 @@
 
 puppet apply --modulepath=/src/jenkins/run/modules /src/jenkins/run/run.pp
 
-/usr/bin/supervisord
+supervisord -c /etc/supervisor/supervisord.conf
