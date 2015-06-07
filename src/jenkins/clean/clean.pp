@@ -54,6 +54,7 @@ define bash_exec (
     unless => $escaped_unless
   }
 }
+
 node default {
   include jenkins
 }
