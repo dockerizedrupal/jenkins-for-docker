@@ -10,7 +10,6 @@ upstream jenkins {
 
 server {
   listen 443 ssl;
-  server_name <%= @server_name %>;
 
   location / {
     proxy_pass http://jenkins;
