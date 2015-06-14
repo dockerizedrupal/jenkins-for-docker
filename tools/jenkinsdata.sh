@@ -49,6 +49,7 @@ if [ "${1}" = "backup" ]; then
         --rm \
         --volumes-from "${CONTAINER}" \
         -v "${WORKING_DIR}:/backup" \
+        --entrypoint /bin/bash \
         viljaste/base:latest tar czvf "/backup/${CONTAINER_NAME}.tar.gz" /jenkins
     done
   fi
@@ -66,6 +67,7 @@ elif [ "${1}" = "restore" ]; then
       --rm \
       --volumes-from "${CONTAINER}" \
       -v "${WORKING_DIR}:/backup" \
+      --entrypoint /bin/bash \
       viljaste/base:latest tar xzvf "/backup/${CONTAINER}.tar.gz"
   done
 elif [ "${1}" = "rm" ]; then
