@@ -1,4 +1,6 @@
 class jenkins::nginx {
+  include jenkins::nginx::timeout
+
   if $http and $https {
     if ! file_exists('/jenkins/ssl/certs/jenkins.crt') {
       require jenkins::nginx::ssl

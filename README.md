@@ -19,6 +19,7 @@ Using the `docker` command:
       -p 443:443 \
       --volumes-from jenkinsdata \
       -e SERVER_NAME="localhost" \
+      -e TIMEOUT="300" \
       -e PROTOCOLS="https" \
       -d \
       viljaste/jenkins:latest
