@@ -18,6 +18,8 @@ Using the `docker` command:
       -p 80:80 \
       -p 443:443 \
       --volumes-from jenkinsdata \
+      -e SERVER_NAME="localhost" \
+      -e TIMEOUT="300" \
       -d \
       viljaste/jenkins:latest
 

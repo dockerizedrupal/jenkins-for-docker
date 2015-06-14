@@ -9,6 +9,7 @@ jenkins:
     - jenkinsdata
   environment:
     - SERVER_NAME=localhost
+    - PROTOCOLS=https
 jenkinsdata:
   image: viljaste/data:latest
   hostname: jenkinsdata
