@@ -22,14 +22,14 @@ Using the `docker` command:
       -e TIMEOUT="300" \
       -e PROTOCOLS="https,http" \
       -d \
-      dockerizedrupal/jenkins:1.0.1
+      dockerizedrupal/jenkins:1.0.2
 
 Using the `docker-compose` command
 
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 1.0.1 \
+      && git checkout 1.0.2 \
       && sudo docker-compose up
 
 ## Build the image
@@ -37,8 +37,8 @@ Using the `docker-compose` command
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 1.0.1 \
-      && sudo docker build -t dockerizedrupal/jenkins:1.0.1 . \
+      && git checkout 1.0.2 \
+      && sudo docker build -t dockerizedrupal/jenkins:1.0.2 . \
       && cd -
 
 ## Back up Jenkins data

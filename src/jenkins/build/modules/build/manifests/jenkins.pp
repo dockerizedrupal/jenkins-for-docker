@@ -1,5 +1,5 @@
 class build::jenkins {
-  require build::jenkins::nginx
+  require build::nginx
   require build::jenkins::packages
   require build::jenkins::supervisor
 
