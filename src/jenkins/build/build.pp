@@ -56,19 +56,5 @@ define bash_exec (
 }
 
 node default {
-  include jenkins
-  include jenkins::docker
-  include jenkins::docker::machine
-  include jenkins::docker::compose
-  include jenkins::nodejs
-  include jenkins::subversion
-  include jenkins::ftp
-  include jenkins::ncftp
-  include jenkins::lftp
-  include jenkins::jq
-  include jenkins::awscli
-  include jenkins::git_svn
-  include jenkins::php
-  include jenkins::composer
-  include jenkins::ansible
+  include build
 }

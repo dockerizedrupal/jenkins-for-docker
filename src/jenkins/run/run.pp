@@ -56,5 +56,5 @@ define bash_exec (
 }
 
 node default {
-  include jenkins
+  include run
 }
