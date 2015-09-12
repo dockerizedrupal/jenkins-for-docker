@@ -1,5 +1,5 @@
 jenkins:
-  image: dockerizedrupal/jenkins:1.0.2
+  image: dockerizedrupal/jenkins:1.0.3
   hostname: jenkins
   restart: always
   ports:
