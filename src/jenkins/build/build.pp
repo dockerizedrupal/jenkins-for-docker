@@ -70,4 +70,5 @@ node default {
   include jenkins::git_svn
   include jenkins::php
   include jenkins::composer
+  include jenkins::ansible
 }

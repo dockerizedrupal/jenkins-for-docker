@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION="1.0.0"
+
 shopt -s nullglob
 
 WORKING_DIR="$(pwd)"
@@ -14,7 +16,9 @@ fi
 
 help() {
   cat << EOF
-jenkinsdata: Usage: jenkinsdata <backup|restore>
+Version: ${VERSION}
+
+Usage: jenkinsdata <backup|restore>
 EOF
 
   exit 1
@@ -35,7 +39,7 @@ if [ -z "${1}" ]; then
 fi
 
 jenkinsdata_containers() {
-  echo "$(docker ps -a | grep jenkinsdata | awk '{ print $1 }')"
+  echo "$(docker ps -a | grep jenkins-data | awk '{ print $1 }')"
 }
 
 if [ "${1}" = "backup" ]; then
@@ -50,7 +54,7 @@ if [ "${1}" = "backup" ]; then
         --volumes-from "${CONTAINER}" \
         -v "${WORKING_DIR}:/backup" \
         --entrypoint /bin/bash \
-        viljaste/base:latest -c "tar czvf /backup/${CONTAINER_NAME}.tar.gz /jenkins"
+        dockerizedrupal/base-debian-jessie:1.0.3 -c "tar czvf /backup/${CONTAINER_NAME}.tar.gz /jenkins"
     done
   fi
 elif [ "${1}" = "restore" ]; then
@@ -61,14 +65,14 @@ elif [ "${1}" = "restore" ]; then
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -v /jenkins \
-      viljaste/data:latest
+      dockerizedrupal/data:1.0.3
 
     docker run \
       --rm \
       --volumes-from "${CONTAINER}" \
       -v "${WORKING_DIR}:/backup" \
       --entrypoint /bin/bash \
-      viljaste/base:latest -c "tar xzvf /backup/${CONTAINER}.tar.gz"
+      dockerizedrupal/base-debian-jessie:1.0.3 -c "tar xzvf /backup/${CONTAINER}.tar.gz"
   done
 else
   unknown_command

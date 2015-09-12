@@ -1,18 +1,18 @@
 jenkins:
-  image: viljaste/jenkins:latest
+  image: dockerizedrupal/jenkins:1.0.0
   hostname: jenkins
   restart: always
   ports:
     - "80:80"
     - "443:443"
   volumes_from:
-    - jenkinsdata
+    - jenkins-data
   environment:
     - SERVER_NAME=localhost
     - TIMEOUT=300
-    - PROTOCOLS=https
-jenkinsdata:
-  image: viljaste/data:latest
-  hostname: jenkinsdata
+    - PROTOCOLS=https,http
+jenkins-data:
+  image: dockerizedrupal/data:1.0.3
+  hostname: jenkins-data
   volumes:
     - /jenkins

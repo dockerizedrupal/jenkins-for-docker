@@ -6,37 +6,39 @@ A [Docker](https://docker.com/) container for [Jenkins](http://jenkins-ci.org/) 
 
 Using the `docker` command:
 
-    CONTAINER="jenkinsdata" && sudo docker run \
+    CONTAINER="jenkins-data" && sudo docker run \
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
-      -v /jenkins/data \
-      viljaste/data:latest
+      -v /jenkins \
+      dockerizedrupal/data:1.0.3
 
     CONTAINER="jenkins" && sudo docker run \
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -p 80:80 \
       -p 443:443 \
-      --volumes-from jenkinsdata \
+      --volumes-from jenkins-data \
       -e SERVER_NAME="localhost" \
       -e TIMEOUT="300" \
-      -e PROTOCOLS="https" \
+      -e PROTOCOLS="https,http" \
       -d \
-      viljaste/jenkins:latest
+      dockerizedrupal/jenkins:1.0.0
 
 Using the `docker-compose` command
 
     TMP="$(mktemp -d)" \
-      && GIT_SSL_NO_VERIFY=true git clone https://git.beyondcloud.io/viljaste/docker-jenkins.git "${TMP}" \
+      && git clone https://github.com/dockerizedrupal/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
+      && git checkout 1.0.0 \
       && sudo docker-compose up
 
 ## Build the image
 
     TMP="$(mktemp -d)" \
-      && GIT_SSL_NO_VERIFY=true git clone https://git.beyondcloud.io/viljaste/docker-jenkins.git "${TMP}" \
+      && git clone https://github.com/dockerizedrupal/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
-      && sudo docker build -t viljaste/jenkins:latest . \
+      && git checkout 1.0.0 \
+      && sudo docker build -t dockerizedrupal/jenkins:1.0.0 . \
       && cd -
 
 ## Back up Jenkins data
