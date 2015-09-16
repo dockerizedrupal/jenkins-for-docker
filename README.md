@@ -19,17 +19,18 @@ Using the `docker` command:
       -p 443:443 \
       --volumes-from jenkins-data \
       -e SERVER_NAME="localhost" \
+      -e TIMEZONE="Etc/UTC" \
       -e TIMEOUT="300" \
       -e PROTOCOLS="https,http" \
       -d \
-      dockerizedrupal/jenkins:1.0.3
+      dockerizedrupal/jenkins:1.0.4
 
 Using the `docker-compose` command
 
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 1.0.3 \
+      && git checkout 1.0.4 \
       && sudo docker-compose up
 
 ## Build the image
@@ -37,8 +38,8 @@ Using the `docker-compose` command
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 1.0.3 \
-      && sudo docker build -t dockerizedrupal/jenkins:1.0.3 . \
+      && git checkout 1.0.4 \
+      && sudo docker build -t dockerizedrupal/jenkins:1.0.4 . \
       && cd -
 
 ## Back up Jenkins data

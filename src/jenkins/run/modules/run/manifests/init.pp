@@ -1,4 +1,5 @@
 class run {
   include run::jenkins
-  require run::nginx
+  include run::nginx
+  include run::timezone
 }
