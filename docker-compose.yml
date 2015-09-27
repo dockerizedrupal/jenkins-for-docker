@@ -1,5 +1,5 @@
 jenkins:
-  image: dockerizedrupal/jenkins:1.0.7
+  image: dockerizedrupal/jenkins:1.1.0
   hostname: jenkins
   restart: always
   ports:
@@ -13,7 +13,7 @@ jenkins:
     - TIMEOUT=300
     - PROTOCOLS=https,http
 jenkins-data:
-  image: dockerizedrupal/data:1.0.4
+  image: dockerizedrupal/data:1.1.0
   hostname: jenkins-data
   volumes:
     - /jenkins

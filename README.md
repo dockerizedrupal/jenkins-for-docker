@@ -1,6 +1,6 @@
 # docker-jenkins
 
-A [Docker](https://docker.com/) container for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.org/) in front of it providing HTTPS.
+A Docker image for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.org/) in front of it providing support for HTTPS.
 
 ## Run the container
 
@@ -8,7 +8,7 @@ A [Docker](https://docker.com/) container for [Jenkins](http://jenkins-ci.org/) 
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -v /jenkins \
-      dockerizedrupal/data:1.0.3
+      dockerizedrupal/data:1.1.0
 
     CONTAINER="jenkins" && sudo docker run \
       --name "${CONTAINER}" \
@@ -21,15 +21,15 @@ A [Docker](https://docker.com/) container for [Jenkins](http://jenkins-ci.org/) 
       -e TIMEOUT="300" \
       -e PROTOCOLS="https,http" \
       -d \
-      dockerizedrupal/jenkins:1.0.7
+      dockerizedrupal/jenkins:1.1.0
 
 ## Build the image
 
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 1.0.7 \
-      && sudo docker build -t dockerizedrupal/jenkins:1.0.7 . \
+      && git checkout 1.1.0 \
+      && sudo docker build -t dockerizedrupal/jenkins:1.1.0 . \
       && cd -
 
 ## Changing the container behaviour on runtime through environment variables
@@ -39,7 +39,7 @@ A [Docker](https://docker.com/) container for [Jenkins](http://jenkins-ci.org/) 
 ## Back up Jenkins data
 
     sudo tools/jenkinsdata backup
-    
+
 ## Restore Jenkins data from a backup
 
     sudo tools/jenkinsdata restore
