@@ -21,15 +21,15 @@ A Docker image for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.o
       -e TIMEOUT="300" \
       -e PROTOCOLS="https,http" \
       -d \
-      dockerizedrupal/jenkins:1.1.0
+      dockerizedrupal/jenkins:1.1.1
 
 ## Build the image
 
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 1.1.0 \
-      && sudo docker build -t dockerizedrupal/jenkins:1.1.0 . \
+      && git checkout 1.1.1 \
+      && sudo docker build -t dockerizedrupal/jenkins:1.1.1 . \
       && cd -
 
 ## Changing the container behaviour on runtime through environment variables

@@ -1,0 +1,16 @@
+client
+dev tap
+proto udp
+remote <%= @openvpn_host %> <%= @openvpn_port %>
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca /etc/openvpn/CA.crt
+tls-client
+remote-cert-tls server
+comp-lzo
+verb 1
+reneg-sec 0
+redirect-gateway def1
+auth-user-pass /etc/openvpn/jenkins.auth

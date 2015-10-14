@@ -1,5 +1,5 @@
 jenkins:
-  image: dockerizedrupal/jenkins:1.1.0
+  image: dockerizedrupal/jenkins:1.1.1
   hostname: jenkins
   restart: always
   ports:
@@ -7,11 +7,22 @@ jenkins:
     - "443:443"
   volumes_from:
     - jenkins-data
+  cap_add:
+    - NET_ADMIN
   environment:
-    - SERVER_NAME=localhost
-    - TIMEZONE=Etc/UTC
-    - TIMEOUT=300
-    - PROTOCOLS=https,http
+    SERVER_NAME: localhost
+    TIMEZONE: Etc/UTC
+    TIMEOUT: 300
+    PROTOCOLS: https,http
+    OPENVPN: Off
+    OPENVPN_DEVICE: TAP
+    OPENVPN_HOST:
+    OPENVPN_PORT:
+    OPENVPN_USERNAME:
+    OPENVPN_PASSWORD:
+    OPENVPN_CA_CERTIFICATE: |
+      -----BEGIN CERTIFICATE-----
+      -----END CERTIFICATE-----
 jenkins-data:
   image: dockerizedrupal/data:1.1.0
   hostname: jenkins-data

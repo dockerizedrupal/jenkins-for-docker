@@ -14,4 +14,5 @@ class build {
   include build::php
   include build::composer
   include build::ansible
+  include build::openvpn
 }
