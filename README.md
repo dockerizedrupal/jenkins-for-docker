@@ -16,10 +16,18 @@ A Docker image for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.o
       -p 80:80 \
       -p 443:443 \
       --volumes-from jenkins-data \
+      --cap-add NET_ADMIN \
       -e SERVER_NAME="localhost" \
       -e TIMEZONE="Etc/UTC" \
       -e TIMEOUT="300" \
       -e PROTOCOLS="https,http" \
+      -e OPENVPN="Off" \
+      -e OPENVPN_DEVICE="TAP" \
+      -e OPENVPN_HOST="" \
+      -e OPENVPN_PORT="1194" \
+      -e OPENVPN_USERNAME="" \
+      -e OPENVPN_PASSWORD="" \
+      -e OPENVPN_CA_CERTIFICATE="" \
       -d \
       dockerizedrupal/jenkins:1.1.1
 
