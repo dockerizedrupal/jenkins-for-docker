@@ -1,3 +1,3 @@
 class build::docker::packages {
-  bash_exec { 'curl -sSL https://get.docker.com/ubuntu/ | sh': }
+  bash_exec { 'wget -qO- https://get.docker.com/ | sh': }
 }
