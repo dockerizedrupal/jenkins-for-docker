@@ -4,9 +4,9 @@ class run::openvpn {
   bash_exec { 'mkdir -p /dev/net': }
 
   if $openvpn_device == "TAP" {
-    file { '/etc/openvpn/jenkins-tap.conf':
+    file { '/etc/openvpn/tap.conf':
       ensure => present,
-      content => template('run/jenkins-tap.conf.erb'),
+      content => template('run/tap.conf.erb'),
       mode => 644
     }
 
@@ -15,9 +15,9 @@ class run::openvpn {
     }
   }
 
-  file { '/etc/openvpn/jenkins.auth':
+  file { '/etc/openvpn/credentials.auth':
     ensure => present,
-    content => template('run/jenkins.auth.erb'),
+    content => template('run/credentials.auth.erb'),
     mode => 600
   }
 

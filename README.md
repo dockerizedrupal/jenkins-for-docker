@@ -1,6 +1,6 @@
 # docker-jenkins
 
-A Docker image for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.org/) in front of it providing support for HTTPS.
+A Docker image for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.org/) in front of it providing support for HTTPS. Also supports connecting to OpenVPN server.
 
 ## Run the container
 
@@ -8,7 +8,8 @@ A Docker image for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.o
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -v /jenkins \
-      dockerizedrupal/data:1.1.0
+      --entrypoint /bin/echo \
+      dockerizedrupal/data:1.1.0 "Data-only container for Jenkins."
 
     CONTAINER="jenkins" && sudo docker run \
       --name "${CONTAINER}" \
@@ -29,15 +30,15 @@ A Docker image for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.o
       -e OPENVPN_PASSWORD="" \
       -e OPENVPN_CA_CERTIFICATE="" \
       -d \
-      dockerizedrupal/jenkins:1.1.3
+      dockerizedrupal/jenkins:1.1.4
 
 ## Build the image
 
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 1.1.3 \
-      && sudo docker build -t dockerizedrupal/jenkins:1.1.3 . \
+      && git checkout 1.1.4 \
+      && sudo docker build -t dockerizedrupal/jenkins:1.1.4 . \
       && cd -
 
 ## Changing the container behaviour on runtime through environment variables
