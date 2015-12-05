@@ -1,5 +1,5 @@
-var current_version = '1.1.3';
-var new_version = '1.1.4';
+var current_version = '1.1.4';
+var new_version = '1.1.5';
 
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-replace');
@@ -89,6 +89,10 @@ module.exports = function(grunt) {
             {
               match: 'VERSION="' + current_version + '"',
               replacement: 'VERSION="' + new_version + '"'
+            },
+            {
+              match: 'dockerizedrupal/jenkins:' + current_version,
+              replacement: 'dockerizedrupal/jenkins:' + new_version
             }
           ],
           usePrefix: false

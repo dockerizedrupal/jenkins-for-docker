@@ -30,15 +30,15 @@ A Docker image for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.o
       -e OPENVPN_PASSWORD="" \
       -e OPENVPN_CA_CERTIFICATE="" \
       -d \
-      dockerizedrupal/jenkins:1.1.4
+      dockerizedrupal/jenkins:1.1.5
 
 ## Build the image
 
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 1.1.4 \
-      && sudo docker build -t dockerizedrupal/jenkins:1.1.4 . \
+      && git checkout 1.1.5 \
+      && sudo docker build -t dockerizedrupal/jenkins:1.1.5 . \
       && cd -
 
 ## Changing the container behaviour on runtime through environment variables

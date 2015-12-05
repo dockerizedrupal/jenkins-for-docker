@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION="1.1.4"
+VERSION="1.1.5"
 
 shopt -s nullglob
 
@@ -65,14 +65,15 @@ elif [ "${1}" = "restore" ]; then
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -v /jenkins \
-      dockerizedrupal/data:1.1.0
+      --entrypoint /bin/echo \
+      dockerizedrupal/jenkins:1.1.5 "Data-only container for Jenkins."
 
     docker run \
       --rm \
       --volumes-from "${CONTAINER}" \
       -v "${WORKING_DIR}:/backup" \
       --entrypoint /bin/bash \
-      dockerizedrupal/base-debian-jessie:1.1.0 -c "tar xzvf /backup/${CONTAINER}.tar.gz"
+      dockerizedrupal/jenkins:1.1.5 -c "tar xzvf /backup/${CONTAINER}.tar.gz"
   done
 else
   unknown_command
