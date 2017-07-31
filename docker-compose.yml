@@ -1,5 +1,5 @@
 jenkins:
-  image: dockerizedrupal/jenkins:2.0.2
+  image: dockerizedrupal/jenkins:2.0.3
   hostname: jenkins
   restart: always
   ports:
@@ -23,7 +23,7 @@ jenkins:
     OPENVPN_PASSWORD:
     OPENVPN_CA_CERTIFICATE:
 jenkins-data:
-  image: dockerizedrupal/jenkins:2.0.2
+  image: dockerizedrupal/jenkins:2.0.3
   hostname: jenkins-data
   entrypoint: ["/bin/echo", "Data-only container for Jenkins."]
   volumes:

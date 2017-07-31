@@ -1,4 +1,6 @@
 class build::jenkins::packages {
+  require build::java::packages
+
   bash_exec { 'wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -': }
 
   file { '/etc/apt/sources.list.d/jenkins.list':

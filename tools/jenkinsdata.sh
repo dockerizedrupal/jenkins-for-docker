@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION="2.0.2"
+VERSION="2.0.3"
 
 shopt -s nullglob
 
@@ -54,7 +54,7 @@ if [ "${1}" = "backup" ]; then
         --volumes-from "${CONTAINER}" \
         -v "${WORKING_DIR}:/backup" \
         --entrypoint /bin/bash \
-        dockerizedrupal/jenkins:2.0.2 -c "tar czvf /backup/${CONTAINER_NAME}.tar.gz /jenkins"
+        dockerizedrupal/jenkins:2.0.3 -c "tar czvf /backup/${CONTAINER_NAME}.tar.gz /jenkins"
     done
   fi
 elif [ "${1}" = "restore" ]; then
@@ -66,14 +66,14 @@ elif [ "${1}" = "restore" ]; then
       -h "${CONTAINER}" \
       -v /jenkins \
       --entrypoint /bin/echo \
-      dockerizedrupal/jenkins:2.0.2 "Data-only container for Jenkins."
+      dockerizedrupal/jenkins:2.0.3 "Data-only container for Jenkins."
 
     docker run \
       --rm \
       --volumes-from "${CONTAINER}" \
       -v "${WORKING_DIR}:/backup" \
       --entrypoint /bin/bash \
-      dockerizedrupal/jenkins:2.0.2 -c "tar xzvf /backup/${CONTAINER}.tar.gz"
+      dockerizedrupal/jenkins:2.0.3 -c "tar xzvf /backup/${CONTAINER}.tar.gz"
   done
 else
   unknown_command
