@@ -1,4 +1,4 @@
-VERSION = "1.1.7"
+VERSION = "2.0.0"
 
 require 'yaml'
 
@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "jenkins"
 
   config.vm.provider "virtualbox" do |v|
-    name = "dockerizedrupal-docker-jenkins-" + VERSION
+    name = "dockerizedrupal-jenkins-for-docker-" + VERSION
 
     name.gsub!(".", "-")
 

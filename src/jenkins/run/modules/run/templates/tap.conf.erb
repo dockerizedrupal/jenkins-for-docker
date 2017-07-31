@@ -1,6 +1,6 @@
 client
 dev tap
-proto udp
+proto <%= @openvpn_proto %>
 remote <%= @openvpn_host %> <%= @openvpn_port %>
 resolv-retry infinite
 nobind

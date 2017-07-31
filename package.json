@@ -1,9 +1,9 @@
 {
-  "name": "docker-jenkins",
-  "version": "1.1.7",
+  "name": "jenkins-for-docker",
+  "version": "2.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dockerizedrupal/docker-jenkins.git"
+    "url": "https://github.com/dockerizedrupal/jenkins-for-docker.git"
   },
   "license": "MIT",
   "dependencies": {
