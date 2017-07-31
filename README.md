@@ -9,7 +9,7 @@ A Docker image for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.o
       -h "${CONTAINER}" \
       -v /jenkins \
       --entrypoint /bin/echo \
-      dockerizedrupal/jenkins:2.0.1 "Data-only container for Jenkins."
+      dockerizedrupal/jenkins:2.0.2 "Data-only container for Jenkins."
 
     CONTAINER="jenkins" && sudo docker run \
       --name "${CONTAINER}" \
@@ -31,15 +31,15 @@ A Docker image for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.o
       -e OPENVPN_PASSWORD="" \
       -e OPENVPN_CA_CERTIFICATE="" \
       -d \
-      dockerizedrupal/jenkins:2.0.1
+      dockerizedrupal/jenkins:2.0.2
 
 ## Build the image
 
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/jenkins-for-docker.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 2.0.1 \
-      && sudo docker build -t dockerizedrupal/jenkins:2.0.1 . \
+      && git checkout 2.0.2 \
+      && sudo docker build -t dockerizedrupal/jenkins:2.0.2 . \
       && cd -
 
 ## Back up Jenkins data
