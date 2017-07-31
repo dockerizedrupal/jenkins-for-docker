@@ -15,4 +15,6 @@ class build {
   include build::composer
   include build::ansible
   include build::openvpn
+  include build::nc
+  include build::nmap
 }
