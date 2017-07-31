@@ -42,10 +42,6 @@ A Docker image for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.o
       && sudo docker build -t dockerizedrupal/jenkins:2.0.0 . \
       && cd -
 
-## Changing the container behaviour on runtime through environment variables
-
-    // TODO
-
 ## Back up Jenkins data
 
     sudo tools/jenkinsdata backup
